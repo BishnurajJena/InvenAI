@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: invenai
+    runtime: python
+    plan: free
+    buildCommand: "python -m py_compile backend/server.py backend/services/ai_service.py"
+    startCommand: "python backend/server.py"
+    envVars:
+      - key: INVENAI_HOST
+        value: 0.0.0.0
+      - key: INVENAI_CORS_ORIGIN
+        value: "*"

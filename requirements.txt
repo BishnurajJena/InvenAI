@@ -1,0 +1,2 @@
+# InvenAI uses only Python standard-library modules at runtime.
+# This file is intentionally kept for cloud platforms that expect requirements.txt.

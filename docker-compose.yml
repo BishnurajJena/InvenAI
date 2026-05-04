@@ -1,0 +1,21 @@
+services:
+  invenai:
+    build: .
+    container_name: invenai-app
+    ports:
+      - "8000:8000"
+    environment:
+      INVENAI_HOST: 0.0.0.0
+      INVENAI_PORT: 8000
+      INVENAI_CORS_ORIGIN: "*"
+    volumes:
+      - invenai_data:/app/backend/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health').read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  invenai_data:
